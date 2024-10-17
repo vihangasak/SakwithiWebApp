@@ -44,7 +44,7 @@
 
         <nav class="flex items-center justify-between p-6 lg:px-8" aria-label="Global">
             <div class="flex lg:flex-1">
-                <a href="#" class="-m-1.5 p-1.5 text-2xl font-bold" style="font-family: Calibri, sans-serif;">
+                <a href="@Url.Action("Index", "Home")" class="-m-1.5 p-1.5 text-2xl font-bold" style="font-family: Calibri, sans-serif;">
                     <span class="text-yellow-500">VIHANGA</span> <span class="text-gray-900">SAKWITHI</span>
                 </a>
             </div>
@@ -170,7 +170,7 @@
                                 <a href="#" class="hover:underline">About me</a>
                             </li>
                             <li>
-                                <a href="#" class="hover:underline">Contact me</a>
+                                <a href="@Url.Action("Contact", "Home")" class="hover:underline">Contact me</a>
                             </li>
                         </ul>
                     </div>
@@ -180,11 +180,20 @@
             <div class="sm:flex sm:items-center sm:justify-between">
                 @*Footer Credit Section*@
                 <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-                    © 2024 <a href="#" class="hover:underline font-medium">Cooked with ♠ By VIHANGA</a>.
+                    © 2024 <a href="#" class="hover:underline font-medium">Cooked with 
+                               <img src="https://img.pikbest.com/png-images/qiantu/valentine-s-day-hands-than-heart-png-free_2609578.png!sw800" alt="With Love"
+                                    style="width: 25px; height: 25px; display: inline-block;">
+                    By VIHANGA</a>.
                     <i>Sri Lankan <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Flag_of_Sri_Lanka.svg/1200px-Flag_of_Sri_Lanka.svg.png?20231005031750" alt="Sri Lankan Flag" class="inline-block h-4 w-8 ml-1" /> Quality Assured!</i>
                 </span>
 
                 <div class="flex mt-4 sm:justify-center sm:mt-0">
+                    <img src="https://cdn.allaboutcookies.org/260x0/filters:quality(75)/images/2023/08/24/logo-microsoft-defender.png" alt="Microsoft Defender Secures Endpoint"
+                         style="width: 60px; height: 30px; display: inline-block; margin-right: 10px;">
+
+                    <img src="https://img.freepik.com/premium-vector/secure-ssl-encryption-logo-secure-connection-icon-vector-illustration-ssl-certificate-icon_526569-865.jpg" alt="Secure Icon"
+                         style="width: 60px; height: 30px; display: inline-block; margin-right: 10px;">
+
                     <a href="https://www.linkedin.com/in/vihanga-sakwithi/" target="_blank" class="text-gray-500 hover:text-gray-900 dark:hover:text-white">
                         <i class="fab fa-linkedin"></i>
                         <span class="sr-only">LinkedIn</span>
