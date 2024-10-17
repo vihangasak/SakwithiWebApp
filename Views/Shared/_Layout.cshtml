@@ -14,6 +14,8 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.14.3/dist/sweetalert2.all.min.js "></script>
+    <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.14.3/dist/sweetalert2.min.css " rel="stylesheet">
 </head>
 <body>
 
@@ -60,7 +62,7 @@
                 <a href="#" class="text-sm font-semibold leading-6 text-gray-900">About</a>
                 <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
                 <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Portfolio</a>
-                <a href="@Url.Action("Contact", "Home")" class="text-sm font-semibold leading-6 text-gray-900">Contact</a>
+                <a href="@Url.Action("Index", "Contact")" class="text-sm font-semibold leading-6 text-gray-900">Contact</a>
             </div>
             <div class="hidden lg:flex lg:flex-1 lg:justify-end">
                 <a href="https://www.linkedin.com/in/vihanga-sakwithi/" target="_blank" class="text-sm font-semibold leading-6 text-blue-500">
@@ -180,10 +182,12 @@
             <div class="sm:flex sm:items-center sm:justify-between">
                 @*Footer Credit Section*@
                 <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-                    © 2024 <a href="#" class="hover:underline font-medium">Cooked with 
-                               <img src="https://img.pikbest.com/png-images/qiantu/valentine-s-day-hands-than-heart-png-free_2609578.png!sw800" alt="With Love"
-                                    style="width: 25px; height: 25px; display: inline-block;">
-                    By VIHANGA</a>.
+                    © 2024 <a href="#" class="hover:underline font-medium">
+                        Cooked with
+                        <img src="https://img.pikbest.com/png-images/qiantu/valentine-s-day-hands-than-heart-png-free_2609578.png!sw800" alt="With Love"
+                             style="width: 29px; height: 29px; display: inline-block;">
+                        By VIHANGA
+                    </a>.
                     <i>Sri Lankan <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Flag_of_Sri_Lanka.svg/1200px-Flag_of_Sri_Lanka.svg.png?20231005031750" alt="Sri Lankan Flag" class="inline-block h-4 w-8 ml-1" /> Quality Assured!</i>
                 </span>
 
@@ -209,6 +213,7 @@
     </footer>
     <!--END-->
 
+    <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.14.3/dist/sweetalert2.all.min.js "></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

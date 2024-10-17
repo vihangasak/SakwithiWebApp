@@ -1,0 +1,96 @@
+﻿@model SakwithiWebApp.Models.ContactModel
+@{ ViewData["Title"] = "Contact Us"; }
+
+<div class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8 pt-14 mt-36">
+    <div class="absolute inset-x-0 top-[-10rem] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[-20rem]" aria-hidden="true">
+        <div class="relative left-1/2 -z-10 aspect-[1155/678] w-[36.125rem] max-w-none -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-40rem)] sm:w-[72.1875rem]" style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)"></div>
+    </div>
+    <div class="mx-auto max-w-2xl text-center">
+        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Contact sales</h2>
+        <p class="mt-2 text-lg leading-8 text-gray-600">Aute magna irure deserunt veniam aliqua magna enim voluptate.</p>
+    </div>
+    <form asp-controller="Contact" asp-action="Submit" method="POST" class="mx-auto mt-16 max-w-xl sm:mt-20" onsubmit="return validateCaptcha()">
+        <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div>
+                <label asp-for="FirstName" class="block text-sm font-semibold leading-6 text-gray-900"></label>
+                <div class="mt-2.5">
+                    <input asp-for="FirstName" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <span asp-validation-for="FirstName" class="text-red-500 text-sm"></span>
+                </div>
+            </div>
+            <div>
+                <label asp-for="LastName" class="block text-sm font-semibold leading-6 text-gray-900"></label>
+                <div class="mt-2.5">
+                    <input asp-for="LastName" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <span asp-validation-for="LastName" class="text-red-500 text-sm"></span>
+                </div>
+            </div>
+            <div class="sm:col-span-2">
+                <label asp-for="Email" class="block text-sm font-semibold leading-6 text-gray-900"></label>
+                <div class="mt-2.5">
+                    <input asp-for="Email" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <span asp-validation-for="Email" class="text-red-500 text-sm"></span>
+                </div>
+            </div>
+            <div class="sm:col-span-2">
+                <label asp-for="Message" class="block text-sm font-semibold leading-6 text-gray-900"></label>
+                <div class="mt-2.5">
+                    <textarea asp-for="Message" rows="4" class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"></textarea>
+                    <span asp-validation-for="Message" class="text-red-500 text-sm"></span>
+                </div>
+            </div>
+            <div class="sm:col-span-2">
+                <label for="captcha" class="block text-sm font-semibold leading-6 text-gray-900">
+                    I am not a Robot - What is <span id="num1"></span> + <span id="num2"></span>?
+                </label>
+                <div class="mt-2.5">
+                    <input type="number" name="captcha" id="captcha"
+                           class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                </div>
+                <input asp-for="NotRbot" type="hidden" id="notRobot">
+                <span asp-validation-for="NotRbot" class="text-red-500 text-sm"></span>
+                <!-- Captcha Error Message -->
+                <div id="captchaError"
+                     class="hidden flex items-center bg-red-300 text-white text-sm font-bold px-4 py-3 mt-5"
+                     role="alert">
+                    <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 20 20">
+                        <path d="M12.432 0c1.34 0 2.01.912 2.01 1.957 0 1.305-1.164 2.512-2.679 2.512-1.269 0-2.009-.75-1.974-1.99C9.789 1.436 10.67 0 12.432 0zM8.309 20c-1.058 0-1.833-.652-1.093-3.524l1.214-5.092c.211-.814.246-1.141 0-1.141-.317 0-1.689.562-2.502 1.117l-.528-.88c2.572-2.186 5.531-3.467 6.801-3.467 1.057 0 1.233 1.273.705 3.23l-1.391 5.352c-.246.945-.141 1.271.106 1.271.317 0 1.357-.392 2.379-1.207l.6.814C12.098 19.02 9.365 20 8.309 20z" />
+                    </svg>
+                    <p>Sure are you a Human? Kindly try to be honest</p>
+                </div>
+            </div>
+        </div>
+        <p class="text-gray-500 font-italic mt-5">
+            Your information is secured with us!
+            <img src="https://cdn-icons-png.flaticon.com/512/508/508337.png" alt="Secure Icon"
+                 style="width: 26px; height: 26px; display: inline-block; margin-left: 4px;">
+        </p>
+        <div class="mt-5">
+            <button type="submit" class="block w-full transition-colors duration-300 rounded-md bg-yellow-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-yellow-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-400">Let's talk</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        const num1 = Math.floor(Math.random() * 10) + 1;
+        const num2 = Math.floor(Math.random() * 10) + 1;
+        document.getElementById('num1').textContent = num1;
+        document.getElementById('num2').textContent = num2;
+
+        function validateCaptcha() {
+            const answer = parseInt(document.getElementById('captcha').value);
+            const captchaError = document.getElementById('captchaError');
+            if (answer !== num1 + num2) {
+                /*alert("Incorrect answer. Please try again.");*/
+                captchaError.classList.remove('hidden');
+                return false;
+            }
+            captchaError.classList.add('hidden');
+            document.getElementById('notRobot').value = true;
+            return true;
+        }
+    </script>
+}
