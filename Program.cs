@@ -22,5 +22,6 @@ namespace SakwithiWebApp
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
     }
 }
