@@ -26,22 +26,27 @@ namespace SakwithiWebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Submit(ContactModel model) 
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Submit(ContactModel model)
         {
-            if (ModelState.IsValid) 
+            if (ModelState.IsValid)
             {
                 try
                 {
-                    SendEmail(model);
+                    await SendEmailAsync(model);
                     TempData["SubmissionSuccessful"] = true;
                     return RedirectToAction("ThankYou", model);
                 }
-                catch (Exception ex) { ModelState.AddModelError("", "An error occurred while sending the email. Please try again later."); }
+                catch (Exception ex)
+                {
+                    //_logger.LogError(ex, "An error occurred while sending the email.");
+                    Console.WriteLine($"An error occurred while sending the email. Please try again later.{ex.Message}");
+                }
             }
             return View("Index", model);
         }
 
-        public IActionResult ThankYou(ContactModel model) 
+        public IActionResult ThankYou(ContactModel model)
         {
             if (TempData["SubmissionSuccessful"] == null)
             {
@@ -50,7 +55,7 @@ namespace SakwithiWebApp.Controllers
             return View(model);
         }
 
-        private void SendEmail(ContactModel model)
+        private async Task SendEmailAsync(ContactModel model)
         {
             var smtpServer = _configuration["SmtpSettings:Server"];
             var smtpPort = int.Parse(_configuration["SmtpSettings:Port"]);
@@ -68,12 +73,12 @@ namespace SakwithiWebApp.Controllers
                 {
                     From = new MailAddress(smtpUsername),
                     Subject = "New Contact Form Submission",
-                    Body = $"Name: {model.FirstName}_{model.LastName}\nEmail: {model.Email}\nMessage: {model.Message}",
+                    Body = $"Name: {model.FirstName} {model.LastName}\nEmail: {model.Email}\nMessage: {model.Message}",
                     IsBodyHtml = false,
                 };
                 mailMessage.To.Add(toEmail);
 
-                client.Send(mailMessage);
+                await client.SendMailAsync(mailMessage);
             }
         }
     }
