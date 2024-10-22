@@ -48,3 +48,6 @@ msbuild.wrn
 
 # Windows
 Thumbs.db
+
+# Environment variables
+production.env

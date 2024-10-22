@@ -18,6 +18,12 @@ namespace SakwithiWebApp
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, configuration) =>
+                {
+                    configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+                    configuration.AddEnvironmentVariables();
+                    configuration.AddJsonFile("production.env", optional: true, reloadOnChange: true);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
